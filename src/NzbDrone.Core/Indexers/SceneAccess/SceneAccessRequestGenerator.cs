@@ -118,8 +118,8 @@ namespace NzbDrone.Core.Indexers.SceneAccess
                 var request = new IndexerRequest(String.Format("{0}/{1}.php?{2}&search={3}&page={4}", 
                     Settings.BaseUrl.TrimEnd('/'), searchType, MagicMethodStrings[searchType], searchString, page),
                     new HttpAccept("application/x-httpd-php"));
-                request.HttpRequest.AddCookie(Settings.CookieUid);
-                request.HttpRequest.AddCookie(Settings.CookiePass);
+                request.HttpRequest.Cookies["uid"] = Settings.CookieUid;
+                request.HttpRequest.Cookies["pass"] = Settings.CookiePass;
 
                 yield return request;
             }

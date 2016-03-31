@@ -17,13 +17,13 @@ namespace NzbDrone.Core.Indexers.SceneAccess
 
             RuleFor(c => c.CookieUid).NotEmpty();
             RuleFor(c => c.CookieUid)
-                .Matches(@"uid=[0-9]{6}", RegexOptions.IgnoreCase)
+                .Matches(@"[0-9]{6}", RegexOptions.IgnoreCase)
                 .WithMessage("Wrong pattern")
                 .AsWarning();
 
             RuleFor(c => c.CookiePass).NotEmpty();
             RuleFor(c => c.CookiePass)
-                .Matches(@"pass=[0-9a-f]{32}", RegexOptions.IgnoreCase)
+                .Matches(@"[0-9a-f]{32}", RegexOptions.IgnoreCase)
                 .WithMessage("Wrong pattern")
                 .AsWarning();
         }
